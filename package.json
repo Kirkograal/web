@@ -2,9 +2,9 @@
     "name": "web",
     "version": "0.0.1",
     "description": "Test project",
-    "main": "main.js",
+    "main": "server.js",
     "scripts": {
-        "start": "node main.js"
+        "start": "node server.js"
     },
     "repository": {
         "type": "git",
