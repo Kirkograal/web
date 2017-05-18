@@ -1,8 +1,8 @@
-var express = require('express'),
-	app     = express();
+var express = require('express');
+var	app     = express();
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-	ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 console.log(`PORT ${process.env.PORT}`);
 console.log(`IP ${process.env.IP}`);
@@ -10,7 +10,8 @@ console.log(`OPENSHIFT_NODEJS_PORT ${process.env.OPENSHIFT_NODEJS_PORT}`);
 console.log(`OPENSHIFT_NODEJS_IP ${process.env.OPENSHIFT_NODEJS_IP}`);
 
 app.get('/', (req, res) => {
-	res.send("Hey im working!!");
+	res.contentType('application/json');
+	res.send(process.env);
 	res.status(200);
 });
 
