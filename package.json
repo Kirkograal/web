@@ -1,24 +1,27 @@
 {
-    "name": "web",
-    "version": "0.0.1",
-    "description": "Test project",
-    "license": "GPL-3.0",
-    "private": true,
-    "main": "server.js",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Kirkograal/web.git"
-    },
-    "bugs": {
-        "url": "https://github.com/Kirkograal/web/issues",
-        "email" : "kirko1029@gmail.com"
-    },
-    "dependencies": {
-        "express": "^4.15.3"
-    },
-    "author": "Kirko <kirko1029@gmail.com>",
-    "homepage": "http://web-kirko.7e14.starter-us-west-2.openshiftapps.com/"
+  "name": "web",
+  "version": "0.0.2",
+  "description": "Test project",
+  "license": "GPL-3.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirkograal/web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kirkograal/web/issues",
+    "email": "kirko1029@gmail.com"
+  },
+  "dependencies": {
+    "discord.js": "^11.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.0"
+  },
+  "author": "Kirko <kirko1029@gmail.com>",
+  "homepage": "http://web-kirko.7e14.starter-us-west-2.openshiftapps.com/"
 }
