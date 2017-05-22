@@ -1,6 +1,6 @@
 module.exports = {
-	run: (message) => {
-		message.channel.send('Pong!');
+	run: (bot, db, msg) => {
+		msg.channel.send('Pong!');
 	},
 	type: 'public',
 	category: 'util',
