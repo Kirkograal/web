@@ -1,3 +1,3 @@
 module.exports = (bot, db) => {
-	console.log('Bot ready!');
+	console.log('Bot is ready!');
 };
