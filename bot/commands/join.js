@@ -11,7 +11,7 @@ module.exports = {
 				msg.reply('connected');
 			})
 			.catch(err => {
-				msg.reply('error: ' + err);
+				msg.reply('error');
 				console.log('error: ' + err);
 			})
 		} else {
