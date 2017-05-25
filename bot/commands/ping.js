@@ -1,9 +1,17 @@
+const now = require('performance-now');
+
 module.exports = {
-	run: (bot, db, msg) => {
-		msg.channel.send('Pong!');
+	run: (bot, db, guildDoc, msg, cmdParams) => {
+		let start = now();
+		msg.channel.send("Ping Pong!")
+		.then(message => {
+			let end = now();
+			return message.edit(`Ping took ${(end - start).toFixed(3)} ms.`);
+		});
 	},
+	name: 'ping',
 	type: 'public',
 	category: 'util',
-	description: 'ping pong mother fucker!',
+	description: 'Ping pong',
 	params: []
 };

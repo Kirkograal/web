@@ -11,6 +11,9 @@ mongoose.connection.once('open', err => {
 	if (err) {
 		console.error(err);
 	} else {
+		mongoose.model('guilds', require('./schemas/guilds'));
+		mongoose.model('users', require('./schemas/users'));
+
 		console.log('Database is ready!');
 	}
 });

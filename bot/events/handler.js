@@ -1,14 +1,17 @@
-var events = {
-	ready: require('./ready'),
-	message: require('./message')
-};
+function loadEvent(event, ...args) {
+	try {
+		require(`./${event}`)(...args);
+	} catch(ex) {
+		console.log(ex);
+	}
+}
 
 module.exports = (bot, db) => {
 	bot.on('ready', () => {
-		events.ready(bot, db);
+		loadEvent('ready', bot, db);
 	});
 
-	bot.on('message', (message) => {
-		events.message(bot, db, message);
+	bot.on('message', (msg) => {
+		loadEvent('message', bot, db, msg);
 	})
 };

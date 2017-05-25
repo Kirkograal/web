@@ -1,7 +1,7 @@
-var Bot = require('./bot');
+const Client = require('./discord').Client;
 
 module.exports = (db) => {
-	var bot = new Bot(db);
+	let bot = new Client(db);
 	bot.login();
 	return bot;
 };
