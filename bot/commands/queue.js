@@ -9,10 +9,6 @@ module.exports = {
 			return msg.reply('You must search for something');
 		}
 
-		if (!bot.voiceConnections.exists('guild.id', msg.guild.id)) {
-			//return msg.reply(`Bot isn't connected to any voice channel. Use \`>>join\` to join a voice channel`);
-		}
-
 		unirest.get(`https://www.googleapis.com/youtube/v3/search`)
 		.query('part=snippet')
 		.query('maxResults=1')

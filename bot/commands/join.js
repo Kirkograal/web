@@ -13,7 +13,7 @@ module.exports = {
 			.catch(err => {
 				msg.reply('error');
 				console.log('error: ' + err);
-			})
+			});
 		} else {
 			msg.reply(`Join a voice channel first`);
 		}
