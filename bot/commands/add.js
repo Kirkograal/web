@@ -1,5 +1,7 @@
 const unirest = require('unirest');
-const { credentials }  = require('../../config/index');
+const url = require('url');
+const truncate = require('truncate');
+const { credentials } = require('../../config/index');
 const { RichEmbed } = require('discord.js');
 
 module.exports = {
@@ -9,39 +11,64 @@ module.exports = {
 			return msg.reply('You must search for something');
 		}
 
-		// Check if its a link
-		if (q.include)
-
-		unirest.get(`https://www.googleapis.com/youtube/v3/search`)
-		.query('part=snippet')
-		.query('maxResults=1')
-		.query('type=video')
-		.query(`q=${encodeURIComponent(q)}`)
-		.query(`key=${credentials.google.apiKey}`)
-		.header('Accept', 'application/json')
-		.end(res => {
-			let result = res.body.items[0];
-
-			if (!result) {
-				return msg.reply(`No results found for \`${q}\``);
-			}
-
+		let addToQueue = (item => {
 			if (!bot.musicQueue.hasOwnProperty(msg.guild.id)) {
 				bot.musicQueue[msg.guild.id] = {};
 				bot.musicQueue[msg.guild.id].items = [];
 			}
-			bot.musicQueue[msg.guild.id].items.push(result);
+
+			bot.musicQueue[msg.guild.id].items.push(item);
 
 			let embed = new RichEmbed()
-			.setTitle(result.snippet.title)
+			.setTitle(item.snippet.title)
 			.setColor('#01f400')
-			.setThumbnail(result.snippet.thumbnails.medium.url)
+			.setThumbnail(item.snippet.thumbnails.medium.url)
 			.setFooter(`Added by ${msg.author.tag} | Queue #${bot.musicQueue[msg.guild.id].items.length}`)
-			.setDescription(result.snippet.description);
+			.setDescription(truncate(item.snippet.description, 100));
 
 			msg.channel.send({embed: embed});
-			bot.commands.get('play').run(bot, db, guildDoc, msg, cmdParams);
+
+			// Start playing if in voice channel
+			if (msg.member.voiceChannel)
+				bot.commands.get('play').run(bot, db, guildDoc, msg, cmdParams);
 		});
+
+		// Check if its a link
+		if (q.includes('youtube.com')) {
+			let videoId = url.parse(q, true).query.v;
+
+			unirest.get(`https://www.googleapis.com/youtube/v3/videos`)
+			.query('part=snippet,id')
+			.query(`id=${videoId}`)
+			.query(`key=${credentials.google.apiKey}`)
+			.header('Accept', 'application/json')
+			.end(res => {
+				let result = res.body.items[0];
+				if (result) {
+					addToQueue(result);
+				} else {
+					return msg.reply(`Invalid youtube link.`);
+				}
+			});
+		} else {
+			unirest.get(`https://www.googleapis.com/youtube/v3/search`)
+			.query('part=snippet')
+			.query('maxResults=1')
+			.query('type=video')
+			.query(`q=${encodeURIComponent(q)}`)
+			.query(`key=${credentials.google.apiKey}`)
+			.header('Accept', 'application/json')
+			.end(res => {
+				let result = res.body.items[0];
+				if (result) {
+					addToQueue(result);
+				} else {
+					return msg.reply(`No results found for \`${q}\``);
+				}
+			});
+		}
+
+		msg.delete();
 	},
 	type: 'public',
 	category: 'music',

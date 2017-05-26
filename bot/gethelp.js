@@ -1,9 +1,9 @@
-const Discord = require('discord.js');
-const config  = require('../config/index');
+const { RichEmbed } = require('discord.js');
+const { homePage }  = require('../config/index');
 
 module.exports = (bot, db, guildDoc, msg, cmdParams) => {
-	let embed = new Discord.RichEmbed()
-	.setAuthor('Commands', '', config.homePage)
+	let embed = new RichEmbed()
+	.setAuthor('Commands', '', homePage)
 	.setColor('#0096ff');
 
 	let publicCommands = '';
