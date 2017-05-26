@@ -12,6 +12,6 @@ module.exports = {
 	name: 'ping',
 	type: 'public',
 	category: 'util',
-	description: 'Ping pong',
+	description: 'Ping pong mother fucker!',
 	params: []
 };
