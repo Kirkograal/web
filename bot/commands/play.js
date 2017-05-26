@@ -2,20 +2,20 @@ const ytdl = require('ytdl-core');
 const config = require('../../config/index');
 
 function startPlaying(bot, msg) {
-	if (!msg.member.voiceChannel) return;
-
 	const item = bot.musicQueue[msg.guild.id].items.shift();
-	if (!item) {
-		msg.member.voiceChannel.leave();
-		return;
-	}
-
 	const voiceConnection = msg.guild.voiceConnection;
+
+	// No song to play
+	if (!item) return voiceConnection.channel.leave();
+
+	bot.musicQueue[msg.guild.id].playing = item;
+
 	const stream = ytdl(`https://www.youtube.com/watch?v=${item.id.videoId || item.id}`, { filter: 'audioonly' });
 	const dispatcher = voiceConnection.playStream(stream);
 
 	dispatcher.on('end', () => {
 		console.log('dispatcher ended');
+		bot.musicQueue[msg.guild.id].playing = {};
 		startPlaying(bot, msg);
 	});
 
@@ -37,7 +37,6 @@ module.exports = {
 				return;
 			}
 		} catch(e) {}
-
 
 		// Check if songs are available
 		if (!bot.musicQueue.hasOwnProperty(msg.guild.id)) {

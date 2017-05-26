@@ -3,6 +3,8 @@ module.exports = {
 	run: (bot, db, guildDoc, msg, cmdParams) => {
 		let voiceConnection = msg.guild.voiceConnection;
 
+		// todo: fix
+
 		if (voiceConnection) {
 			if (voiceConnection.dispatcher) {
 				if (voiceConnection.dispatcher.speaking) {

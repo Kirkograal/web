@@ -15,6 +15,11 @@ module.exports = {
 			if (!bot.musicQueue.hasOwnProperty(msg.guild.id)) {
 				bot.musicQueue[msg.guild.id] = {};
 				bot.musicQueue[msg.guild.id].items = [];
+				bot.musicQueue[msg.guild.id].playing = {};
+			}
+
+			if (bot.musicQueue[msg.guild.id].items.length >= 20) {
+				return msg.reply(`Queue is full at the moment. Try again later.`);
 			}
 
 			bot.musicQueue[msg.guild.id].items.push(item);
