@@ -19,10 +19,6 @@ mongoose.connection.once('open', err => {
 });
 
 // Establish connection
-if (config.inDevelopment) {
-	mongoose.connect(config.db.developmentURL);
-} else if (config.inProduction) {
-	mongoose.connect(config.db.productionURL);
-}
+mongoose.connect(config.db.url);
 
 module.exports = mongoose.models;
