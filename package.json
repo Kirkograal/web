@@ -19,7 +19,6 @@
 	"dependencies": {
 		"discord.js": "git://github.com/hydrabolt/discord.js.git#stable",
 		"express": "^4.15.3",
-		"mongodb": "^2.2.27",
 		"mongoose": "^4.10.0",
 		"performance-now": "^2.1.0",
 		"truncate": "^2.0.0",
