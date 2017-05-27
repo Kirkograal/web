@@ -5,7 +5,7 @@ module.exports = {
 	port: 8080,
 	db: {
 		developmentURL: `mongodb://localhost:27017/${process.env.MONGODB_DATABASE}`,
-		productionURL: `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@localhost:27017/${process.env.MONGODB_DATABASE}`
+		productionURL: `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@0.0.0.0:27017/${process.env.MONGODB_DATABASE}`
 	},
 	bot: {
 		prefix: '>>',
