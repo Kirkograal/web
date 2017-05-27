@@ -1,4 +1,6 @@
 
+//"ffmpeg-binaries": "^3.2.2-3",
+
 if (process.env.NODE_ENV !== 'production') {
 	console.log('Configuring development environment');
 	require('dotenv').config();
