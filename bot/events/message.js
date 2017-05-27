@@ -25,7 +25,12 @@ module.exports = (...[bot, db, msg]) => {
 			// Get guild document from database
 			db.guilds.findOne({_id: msg.guild.id}, (err, doc) => {
 				if (err) return;
-				command.run(bot, db, doc, msg, cmdParams);
+				try {
+					command.run(bot, db, doc, msg, cmdParams);
+				} catch (err) {
+					console.error(err);
+					msg.reply(`Error running command. Please contact bot owner for assistance.`);
+				}
 			});
 		} else if (msg.channel.type === 'dm') {
 			if (command.type === 'Public')

@@ -6,10 +6,10 @@ const { RichEmbed } = require('discord.js');
 const config  = require('../config/index');
 
 module.exports = (bot, db, guildDoc, msg, cmdParams) => {
-	// Check if user is requesting help for specific command
+	// Check what user is requesting help for
 	let name = cmdParams.join(' ').trim();
 	if (name) {
-		// Check if command exist
+		// Check if its a command
 		let cmd = bot.commands.get(name);
 		if (cmd) {
 			let embed = new RichEmbed()
@@ -33,12 +33,13 @@ module.exports = (bot, db, guildDoc, msg, cmdParams) => {
 				}
 				embed.addField('Parameters', params, false);
 			}
-
 			msg.channel.send({embed});
 		} else {
-			msg.reply(`Couldn't find any info for the command \`${name}\``);
+			// todo: Allow user to request help for certain category or type (public, priv, etc.)
+			msg.reply(`Couldn't find any info for \`${name}\``);
 		}
 	} else {
+		// Get list of all commands
 		let publicCommands  = '';
 		let privateCommands = '';
 		let commands        = '';

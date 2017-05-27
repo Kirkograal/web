@@ -7,9 +7,9 @@ module.exports = {
 	description: 'List of available commands',
 	params: [
 		{
-			name: 'command',
+			name: 'query',
 			optional: true,
-			description: 'Get details of a specific command.',
+			description: 'Command name, category, or type.',
 			default: null
 		}
 	]
