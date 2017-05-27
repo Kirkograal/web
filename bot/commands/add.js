@@ -27,7 +27,7 @@ module.exports = {
 			let embed = new RichEmbed()
 			.setTitle(item.snippet.title)
 			.setColor('#01f400')
-			.setThumbnail(item.snippet.thumbnails.medium.url)
+			.setThumbnail(item.snippet.thumbnails.high.url)
 			.setFooter(`Added by ${msg.author.tag} | Queue #${bot.musicQueue[msg.guild.id].items.length}`)
 			.setDescription(truncate(item.snippet.description, 100));
 
@@ -75,14 +75,15 @@ module.exports = {
 
 		msg.delete();
 	},
-	type: 'public',
-	category: 'music',
+	type: 'Public',
+	category: 'Music',
 	description: 'Add video to music queue',
 	params: [
 		{
 			name: 'query',
 			optional: false,
-			description: 'Query term to search for or the youtube video link'
+			description: 'Query term to search for or the youtube video link',
+			default: null
 		}
 	]
 };

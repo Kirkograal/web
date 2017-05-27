@@ -24,8 +24,8 @@ module.exports = {
 		msg.channel.send({embed: embed});
 		msg.delete();
 	},
-	type: 'public',
-	category: 'music',
+	type: 'Public',
+	category: 'Music',
 	description: `Shows what is coming up next in queue`,
 	params: []
 };

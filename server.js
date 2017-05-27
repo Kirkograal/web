@@ -1,6 +1,6 @@
 
 if (process.env.NODE_ENV !== 'production') {
-	console.log('not in production');
+	console.log('Configuring development environment');
 	require('dotenv').config();
 }
 

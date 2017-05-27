@@ -23,8 +23,8 @@ module.exports = {
 			return msg.reply(`Nothing is playing`);
 		}
 	},
-	type: 'public',
-	category: 'music',
+	type: 'Public',
+	category: 'Music',
 	description: 'Checks what is currently playing',
 	params: []
 };

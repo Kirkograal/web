@@ -19,7 +19,7 @@ module.exports = (...[bot, db, msg]) => {
 
 		// whether in guild or dm channel
 		if (msg.channel.type === 'text') {
-			if (command.type === 'private')
+			if (command.type === 'Private')
 				return msg.reply(`You must message me directly to use this command.`);
 
 			// Get guild document from database
@@ -28,7 +28,7 @@ module.exports = (...[bot, db, msg]) => {
 				command.run(bot, db, doc, msg, cmdParams);
 			});
 		} else if (msg.channel.type === 'dm') {
-			if (command.type === 'public')
+			if (command.type === 'Public')
 				return msg.reply(`You must be in a guild channel to use this command.`);
 
 			command.run(bot, db, null, msg, cmdParams);

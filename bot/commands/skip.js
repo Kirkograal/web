@@ -13,8 +13,8 @@ module.exports = {
 			msg.reply(`Can't skip songs right now`);
 		}
 	},
-	type: 'public',
-	category: 'music',
+	type: 'Public',
+	category: 'Music',
 	description: 'Skips current song',
 	params: []
 };
