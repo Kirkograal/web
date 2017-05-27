@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const config   = require('../config/index');
+const { db }   = require('../config/index');
 
 // Couldn't connect
 mongoose.connection.on('error', err => {
@@ -19,6 +19,6 @@ mongoose.connection.once('open', err => {
 });
 
 // Establish connection
-mongoose.connect(config.db.url);
+mongoose.connect(db.url);
 
 module.exports = mongoose.models;
