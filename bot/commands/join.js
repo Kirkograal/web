@@ -1,5 +1,3 @@
-const ytdl = require('ytdl-core');
-
 module.exports = {
 	run: (bot, db, guildDoc, msg, cmdParams) => {
 		const voiceChannel = msg.member.voiceChannel;
@@ -7,25 +5,17 @@ module.exports = {
 		if (voiceChannel) {
 			voiceChannel.join()
 			.then(() => {
-				console.log('connected');
-				msg.reply('connected');
+				//msg.reply(`I've connected to ${voiceChannel.name}!`);
 			})
 			.catch(err => {
-				msg.reply('error');
-				console.log('error: ' + err);
+				msg.reply(`Sorry, something went wrong when joining channel. Please try again later.`);
 			});
 		} else {
-			msg.reply(`Join a voice channel first`);
+			msg.reply(`You must join a voice channel first.`);
 		}
 	},
-	type: 'public',
-	category: 'music',
-	description: 'Joins a voice channel',
-	params: [
-		{
-			name: 'channel',
-			optional: true,
-			description: 'Voice channel to join'
-		}
-	]
+	type: 'Public',
+	category: 'Music',
+	description: 'Joins the current voice channel.',
+	params: []
 };

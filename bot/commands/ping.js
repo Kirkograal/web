@@ -9,9 +9,9 @@ module.exports = {
 			return message.edit(`Ping took ${(end - start).toFixed(3)} ms.`);
 		});
 	},
-	name: 'ping',
-	type: 'public',
-	category: 'util',
-	description: 'Ping pong',
+	name: 'Ping',
+	type: 'Public',
+	category: 'Client',
+	description: 'Ping pong mother fucker!',
 	params: []
 };

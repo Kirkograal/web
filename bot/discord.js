@@ -10,8 +10,7 @@ class Client extends Discord.Client {
 				'GUILD_ROLE_UPDATE',
 				'CHANNEL_DELETE',
 				'USER_NOTE_UPDATE',
-				'TYPING_START',
-				'VOICE_STATE_UPDATE'
+				'TYPING_START'
 			],
 		});
 
@@ -21,34 +20,8 @@ class Client extends Discord.Client {
 		// Message commands
 		require('./commands/handler')(this);
 
-		///require('./musicQueue')(this);
-		this.musicQueue = new Map();
-	}
-
-	// Simple login
-	login() {
-		return super.login(config.bot.token);
-	}
-
-	// Add item to guild specific queue
-	addToQueue(guildID, item) {
-		let queue = this.musicQueue.get(guildID);
-		if (queue) {
-			queue.push(item);
-		} else {
-			this.musicQueue.set(guildID, [item]);
-		}
-	}
-
-	// Remove item from guild queue
-	nextInQueue(guildID) {
-		let queue = this.musicQueue.get(guildID);
-		if (queue) {
-			let next = queue[0];
-			console.log(`next: ${next}`)
-			queue.shift();
-			return next;
-		}
+		// Every guild is stored with their specific songs
+		this.musicQueue = {}
 	}
 
 	// Seach for guild channel
@@ -87,6 +60,11 @@ class Client extends Discord.Client {
 				query = query.slice(1);
 			return this.users.find("username", query);
 		}
+	}
+
+	// Simple login
+	login() {
+		return super.login(config.bot.token);
 	}
 }
 
