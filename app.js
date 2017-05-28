@@ -1,13 +1,11 @@
 const path    = require('path');
 const express = require('express');
-const config  = require('./config/index');
 const app     = express();
 
 // App settings
 app.set('env', process.env);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('port', config.port);
 
 // Middleware
 app.use((err, req, res, next) => {
