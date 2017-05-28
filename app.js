@@ -1,8 +1,8 @@
 const path    = require('path');
 const express = require('express');
 const config  = require('./config/index');
-const db      = require('./database/index');
-const bot     = require('./bot/index')(db);
+//const db      = require('./database/index');
+//const bot     = require('./bot/index')(db);
 const app     = express();
 
 // App settings
