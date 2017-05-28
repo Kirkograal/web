@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "discord.js": "^11.1.0",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "mongoose": "^4.10.0",
     "performance-now": "^2.1.0",
