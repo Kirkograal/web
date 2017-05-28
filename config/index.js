@@ -4,8 +4,7 @@ module.exports = {
 	homePage: 'http://web-imkirko.7e14.starter-us-west-2.openshiftapps.com/',
 	port: 8080,
 	db: {
-		developmentURL: `mongodb://localhost:27017/${process.env.MONGODB_DATABASE}`,
-		productionURL: `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@localhost:27017/${process.env.MONGODB_DATABASE}`
+		url: `mongodb://${process.env[process.env.DATABASE_SERVICE_NAME + '_USER']}:${process.env[process.env.DATABASE_SERVICE_NAME + '_PASSWORD']}@${process.env[process.env.DATABASE_SERVICE_NAME + '_SERVICE_HOST']}:${process.env[process.env.DATABASE_SERVICE_NAME + '_PASSWORD']}/bot`
 	},
 	bot: {
 		prefix: '>>',
