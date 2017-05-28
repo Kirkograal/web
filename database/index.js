@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { db }   = require('../config/index');
+const config   = require('../config/index');
 
 // Couldn't connect
 mongoose.connection.on('error', err => {
@@ -19,6 +19,10 @@ mongoose.connection.once('open', err => {
 });
 
 // Establish connection
-mongoose.connect(db.url);
+if (config.inDevelopment) {
+	mongoose.connect(config.db.developmentURL);
+} else if (config.inProduction) {
+	mongoose.connect(config.db.productionURL);
+}
 
 module.exports = mongoose.models;
