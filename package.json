@@ -17,7 +17,6 @@
 		"email": "kirko1029@gmail.com"
 	},
 	"dependencies": {
-		"discord.js": "git://github.com/hydrabolt/discord.js.git#stable",
 		"express": "^4.15.3",
 		"mongoose": "^4.10.0"
 	},
