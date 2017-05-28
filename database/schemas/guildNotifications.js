@@ -17,7 +17,7 @@ module.exports = {
 	member_offline: {
 		enabled: {type: Boolean, default: false},
 		channel_id: String,
-		message: {type: String, default: '@user is now offline'}
+		message: {type: String, default: '@user is now offline.'}
 	},
 	message_deleted: {
 		enabled: {type: Boolean, default: false},
