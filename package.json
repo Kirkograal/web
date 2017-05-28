@@ -23,7 +23,6 @@
 		"performance-now": "^2.1.0",
 		"truncate": "^2.0.0",
 		"unirest": "^0.5.1",
-		"uuid": "^3.0.1",
 		"ytdl-core": "^0.14.1"
 	},
 	"devDependencies": {
